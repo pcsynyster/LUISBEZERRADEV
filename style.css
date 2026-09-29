@@ -183,6 +183,23 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .card-links a { border-bottom: 1px solid var(--lime); }
 .card-links a:hover { color: var(--lime); }
 
+.offer { background: var(--lime); color: var(--black); padding: clamp(72px, 10vw, 128px) 0; }
+.offer-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px 72px; align-items: center; }
+.offer .label { color: rgba(10, 10, 10, .65); margin-top: 0; }
+.offer .sub { color: #1c2606; }
+.offer-card { background: var(--black); color: var(--cream); border-radius: 6px; padding: clamp(28px, 4vw, 48px); box-shadow: 14px 14px 0 rgba(10, 10, 10, .18); }
+.offer-tag { font-family: var(--mono); font-size: 13px; color: var(--lime); }
+.was { font-family: var(--mono); font-size: 18px; color: var(--muted); margin-top: 22px; }
+.now { display: flex; align-items: baseline; gap: 12px; margin-top: 4px; }
+.now .cur { font-family: var(--mono); font-size: 20px; color: var(--muted); }
+.now .num { font-weight: 900; font-size: clamp(64px, 9vw, 112px); line-height: 1; letter-spacing: -.05em; color: var(--lime); font-variant-numeric: tabular-nums; }
+.save { display: inline-block; margin-top: 10px; background: var(--lime); color: var(--black); font-family: var(--mono); font-size: 13px; padding: 4px 10px; }
+.offer-list { display: grid; gap: 12px; margin: 28px 0 22px; padding-top: 24px; border-top: 1px solid var(--line); }
+.offer-list li { position: relative; padding-left: 24px; }
+.offer-list li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 8px; height: 8px; background: var(--lime); transform: rotate(45deg); }
+.pay { font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+.offer-card .btn { display: block; text-align: center; }
+
 .about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px 72px; align-items: start; }
 .portrait { position: relative; margin-top: 40px; max-width: 380px; }
 .portrait::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; background: var(--lime); z-index: 0; transition: transform .5s var(--ease); }
@@ -219,7 +236,7 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .footer .wrap { display: flex; justify-content: space-between; }
 
 @media (max-width: 800px) {
-  .about, .contact-grid { grid-template-columns: 1fr; }
+  .about, .contact-grid, .offer-grid { grid-template-columns: 1fr; }
   .nav a:not(.nav-cta) { display: none; }
   .dots { gap: 9px; }
   .hero { min-height: 0; }

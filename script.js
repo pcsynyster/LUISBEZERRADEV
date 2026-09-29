@@ -18,8 +18,7 @@ const projects = [
     imagem: "assets/mv-leds.jpg",
     site: "https://www.mvleds.com.br",
     codigo: ""
-  },
-  
+  }
 ];
 
 const MARQUEE_PHRASES = [
@@ -105,6 +104,26 @@ function setupReveal() {
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -6% 0px" });
   $$(".reveal, [data-split], .flow, .dots, .strike").forEach(el => io.observe(el));
+}
+
+function setupCounters() {
+  if (reduce) return;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      const end = Number(e.target.dataset.count);
+      const t0 = performance.now();
+      const step = now => {
+        const p = Math.min(1, (now - t0) / 1600);
+        const eased = 1 - Math.pow(1 - p, 4);
+        e.target.textContent = Math.round(end * eased).toLocaleString("pt-BR");
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }, { threshold: 0.6 });
+  $$("[data-count]").forEach(el => io.observe(el));
 }
 
 function setupMarquee() {
@@ -346,7 +365,7 @@ function init() {
   setupTilt();
   setupSpotlight();
   setupForm();
-  runIntro(setupReveal);
+  runIntro(() => { setupReveal(); setupCounters(); });
 }
 
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
