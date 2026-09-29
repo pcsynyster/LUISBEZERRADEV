@@ -190,9 +190,9 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .offer-card { background: var(--black); color: var(--cream); border-radius: 6px; padding: clamp(28px, 4vw, 48px); box-shadow: 14px 14px 0 rgba(10, 10, 10, .18); }
 .offer-tag { font-family: var(--mono); font-size: 13px; color: var(--lime); }
 .was { font-family: var(--mono); font-size: 18px; color: var(--muted); margin-top: 22px; }
-.now { display: flex; align-items: baseline; gap: 12px; margin-top: 4px; }
-.now .cur { font-family: var(--mono); font-size: 20px; color: var(--muted); }
-.now .num { font-weight: 900; font-size: clamp(64px, 9vw, 112px); line-height: 1; letter-spacing: -.05em; color: var(--lime); font-variant-numeric: tabular-nums; }
+.now { display: flex; align-items: baseline; gap: 8px; margin-top: 6px; }
+.now .cur { font-family: var(--sans); font-size: clamp(26px, 3.5vw, 38px); font-weight: 800; color: var(--cream); line-height: 1; }
+.now .num { font-weight: 900; font-size: clamp(52px, 6.8vw, 84px); line-height: 1; letter-spacing: -.04em; color: var(--lime); font-variant-numeric: tabular-nums; }
 .save { display: inline-block; margin-top: 10px; background: var(--lime); color: var(--black); font-family: var(--mono); font-size: 13px; padding: 4px 10px; }
 .offer-list { display: grid; gap: 12px; margin: 28px 0 22px; padding-top: 24px; border-top: 1px solid var(--line); }
 .offer-list li { position: relative; padding-left: 24px; }
