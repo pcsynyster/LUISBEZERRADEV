@@ -28,7 +28,9 @@
   <a class="tag" href="#inicio"><span class="dot"></span>// desenvolvimento web</a>
   <nav class="nav" aria-label="Principal">
     <a href="#projetos">projetos</a>
-    <a href="#oferta">promoção</a>
+    <a href="#processo">como funciona</a>
+    <a href="#oferta">pacotes</a>
+    <a href="#faq">dúvidas</a>
     <a href="#sobre">sobre</a>
     <a href="#contato" class="nav-cta" data-magnetic>contato</a>
   </nav>
@@ -110,28 +112,147 @@
     </div>
   </section>
 
+  <section class="sand" id="caso" hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label dark reveal">// estudo de caso</p>
+        <h2 class="h2 dark" data-split>Um projeto por dentro.</h2>
+      </div>
+      <div class="case" id="case"></div>
+    </div>
+  </section>
+
+  <section class="night" id="depoimentos" hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label reveal">// depoimentos</p>
+        <h2 class="h2" data-split>Quem já tem um caminho próprio.</h2>
+      </div>
+      <div class="quotes" id="quotes"></div>
+    </div>
+  </section>
+
+  <section class="sand" id="processo">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="label dark reveal">// como funciona</p>
+        <h2 class="h2 dark" data-split>Do primeiro papo ao site no ar.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal" style="--d:0">
+          <span class="step-n">01</span>
+          <h3>Conversa</h3>
+          <p>Você me conta sobre o seu negócio e o que espera do site, direto pelo WhatsApp.</p>
+        </li>
+        <li class="step reveal" style="--d:140">
+          <span class="step-n">02</span>
+          <h3>Proposta</h3>
+          <p>Eu envio o que será feito, o valor e o prazo. Nada começa antes de você concordar.</p>
+        </li>
+        <li class="step reveal" style="--d:280">
+          <span class="step-n">03</span>
+          <h3>Desenvolvimento</h3>
+          <p>Construo o site e você acompanha, aprovando o visual antes de seguirmos.</p>
+        </li>
+        <li class="step reveal" style="--d:420">
+          <span class="step-n">04</span>
+          <h3>Entrega</h3>
+          <p>Coloco o site no ar e te mostro como tudo funciona.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
   <section class="offer" id="oferta">
-    <div class="wrap offer-grid">
-      <div class="offer-copy">
-        <p class="label dark reveal">// promoção</p>
+    <div class="wrap">
+      <div class="offer-head">
+        <p class="label dark reveal">// pacotes</p>
         <h2 class="h2 dark" data-split>Um caminho seu, no ar e ligado ao seu WhatsApp.</h2>
         <p class="sub dark reveal">Um SITE profissional para o seu negócio parar de depender só do Instagram e receber o cliente direto na conversa.</p>
       </div>
 
-      <div class="offer-card reveal" style="--d:120">
-        <p class="offer-tag">// site profissional</p>
-        <p class="was">de <span class="strike">R$ 2.000</span></p>
-        <div class="now"><span class="cur">R$</span><span class="num" data-count="1499">1.499</span></div>
-        <p class="save">economize R$ 501</p>
-        <ul class="offer-list">
-          <li>Design sob medida para a sua marca</li>
-          <li>Responsivo: celular, tablet e computador</li>
-          <li>Botão e formulário direto para o WhatsApp</li>
-          <li>Estrutura pensada para aparecer no Google</li>
-          <li>Publicação no AR</li>
-        </ul>
-        <p class="pay">Pagamento: 50% na entrada e 50% na entrega.</p>
-        <a class="btn btn-green" data-magnetic href="https://wa.me/5584991421656?text=Ol%C3%A1%2C%20Luis!%20Quero%20o%20site%20profissional%20por%20R%24%201.499." target="_blank" rel="noopener">Quero esse site</a>
+      <div class="packs">
+        <article class="pack reveal" style="--d:0">
+          <p class="offer-tag">// básico</p>
+          <p class="ask">sob consulta</p>
+          <p class="pack-note">Para quem precisa estar no ar com o essencial.</p>
+          <ul class="offer-list">
+            <li>Página única e objetiva</li>
+            <li>Responsiva: celular, tablet e computador</li>
+            <li>Botão direto para o WhatsApp</li>
+            <li>Publicação no AR</li>
+          </ul>
+          <a class="btn btn-line" data-magnetic href="https://wa.me/5584991421656?text=Ol%C3%A1%2C%20Luis!%20Quero%20saber%20mais%20sobre%20o%20pacote%20b%C3%A1sico." target="_blank" rel="noopener">Falar sobre o básico</a>
+        </article>
+
+        <article class="pack offer-card featured reveal" style="--d:120">
+          <p class="offer-tag">// pacote completo <span class="flag">recomendado</span></p>
+          <p class="was">de <span class="strike">R$ 2.000</span></p>
+          <div class="now"><span class="cur">R$</span><span class="num" data-count="1499">1.499</span></div>
+          <p class="save">economize R$ 501</p>
+          <p class="until" id="promo-until" hidden></p>
+          <ul class="offer-list">
+            <li>Design sob medida para a sua marca</li>
+            <li>Responsivo: celular, tablet e computador</li>
+            <li>Botão e formulário direto para o WhatsApp</li>
+            <li>Estrutura pensada para aparecer no Google</li>
+            <li>Publicação no AR</li>
+          </ul>
+          <p class="pay">Pagamento: 50% na entrada e 50% na entrega.</p>
+          <a class="btn btn-green" data-magnetic href="https://wa.me/5584991421656?text=Ol%C3%A1%2C%20Luis!%20Quero%20o%20site%20profissional%20por%20R%24%201.499." target="_blank" rel="noopener">Quero esse site</a>
+        </article>
+
+        <article class="pack reveal" style="--d:240">
+          <p class="offer-tag">// manutenção mensal</p>
+          <p class="ask">sob consulta <span class="per">/ mês</span></p>
+          <p class="pack-note">Para manter o seu site sempre atualizado.</p>
+          <ul class="offer-list">
+            <li>Ajustes de textos e imagens</li>
+            <li>Acompanhamento do site no ar</li>
+            <li>Suporte direto pelo WhatsApp</li>
+          </ul>
+          <a class="btn btn-line" data-magnetic href="https://wa.me/5584991421656?text=Ol%C3%A1%2C%20Luis!%20Quero%20saber%20mais%20sobre%20a%20manuten%C3%A7%C3%A3o%20mensal." target="_blank" rel="noopener">Falar sobre a manutenção</a>
+        </article>
+      </div>
+
+      <div class="guarantee reveal">
+        <span class="g-tag">// garantia</span>
+        <p><strong>Ajustes até você aprovar.</strong> Você vê o visual antes da entrega final e pede as mudanças necessárias até estar satisfeito.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="night" id="faq">
+    <div class="wrap faq-wrap">
+      <div>
+        <p class="label reveal">// perguntas frequentes</p>
+        <h2 class="h2" data-split>Antes de chamar, tire suas dúvidas.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <button class="faq-q" id="q1" aria-expanded="false" aria-controls="a1"><span>Qual é o prazo para o site ficar pronto?</span><i></i></button>
+          <div class="faq-a" id="a1" role="region" aria-labelledby="q1"><div><p>O prazo depende do tamanho do projeto e é combinado na proposta, antes de qualquer pagamento.</p></div></div>
+        </div>
+        <div class="faq-item reveal" style="--d:60">
+          <button class="faq-q" id="q2" aria-expanded="false" aria-controls="a2"><span>O que eu preciso enviar?</span><i></i></button>
+          <div class="faq-a" id="a2" role="region" aria-labelledby="q2"><div><p>Logo (se tiver), textos, fotos e o link do seu Instagram. O que faltar, eu ajudo a organizar durante a conversa.</p></div></div>
+        </div>
+        <div class="faq-item reveal" style="--d:120">
+          <button class="faq-q" id="q3" aria-expanded="false" aria-controls="a3"><span>Como funcionam domínio e hospedagem?</span><i></i></button>
+          <div class="faq-a" id="a3" role="region" aria-labelledby="q3"><div><p>Eu cuido da publicação e te oriento na escolha do domínio. Os custos de registro e hospedagem, quando existirem, são combinados na proposta.</p></div></div>
+        </div>
+        <div class="faq-item reveal" style="--d:180">
+          <button class="faq-q" id="q4" aria-expanded="false" aria-controls="a4"><span>Quem cuida do site depois de pronto?</span><i></i></button>
+          <div class="faq-a" id="a4" role="region" aria-labelledby="q4"><div><p>Depois da entrega você pode contratar a manutenção mensal ou pedir ajustes pontuais pelo WhatsApp.</p></div></div>
+        </div>
+        <div class="faq-item reveal" style="--d:240">
+          <button class="faq-q" id="q5" aria-expanded="false" aria-controls="a5"><span>O site funciona bem no celular?</span><i></i></button>
+          <div class="faq-a" id="a5" role="region" aria-labelledby="q5"><div><p>Sim. Todos os sites são feitos para funcionar bem em celular, tablet e computador.</p></div></div>
+        </div>
+        <div class="faq-item reveal" style="--d:300">
+          <button class="faq-q" id="q6" aria-expanded="false" aria-controls="a6"><span>Como é o pagamento?</span><i></i></button>
+          <div class="faq-a" id="a6" role="region" aria-labelledby="q6"><div><p>No pacote completo, 50% na entrada e 50% na entrega.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
