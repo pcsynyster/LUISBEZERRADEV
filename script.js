@@ -21,6 +21,30 @@ const projects = [
   }
 ];
 
+const PROMO_ATE = "";
+
+const testimonials = [
+  {
+    texto: "Escreva aqui o depoimento do cliente, com as palavras dele.",
+    nome: "Nome do cliente",
+    negocio: "Nome do negócio"
+  },
+  {
+    texto: "Escreva aqui o segundo depoimento. Apague este bloco se tiver só um.",
+    nome: "Nome do cliente",
+    negocio: "Nome do negócio"
+  }
+];
+
+const caseStudy = {
+  cliente: "Nome do cliente",
+  problema: "Descreva aqui qual era o problema do cliente antes do site.",
+  solucao: "Descreva aqui o que você fez.",
+  resultado: "Descreva aqui o que mudou depois, só com dados reais.",
+  imagem: "",
+  link: ""
+};
+
 const MARQUEE_PHRASES = [
   "Sites modernos e responsivos",
   "Foco no seu negócio",
@@ -34,6 +58,8 @@ const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
 document.documentElement.classList.add("js");
+
+const esc = s => String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
 
 function renderProjects() {
   $("#projects").innerHTML = projects.map((p, i) => {
@@ -56,6 +82,31 @@ function renderProjects() {
         </div>
       </article>`;
   }).join("");
+}
+
+function renderTestimonials() {
+  if (!testimonials.length) return;
+  $("#depoimentos").hidden = false;
+  $("#quotes").innerHTML = testimonials.map((t, i) => `
+    <figure class="quote reveal" style="--d:${(i % 3) * 110}">
+      <blockquote><p>${esc(t.texto)}</p></blockquote>
+      <figcaption><strong>${esc(t.nome)}</strong>${esc(t.negocio)}</figcaption>
+    </figure>`).join("");
+}
+
+function renderCase() {
+  const c = caseStudy;
+  if (!c.problema || !c.resultado) return;
+  $("#caso").hidden = false;
+  const blocks = [["O problema", c.problema, ""], ["O que eu fiz", c.solucao, ""], ["O resultado", c.resultado, " result"]].filter(b => b[1]);
+  const media = c.imagem ? `<div class="case-media reveal"><img src="${esc(c.imagem)}" alt="Projeto ${esc(c.cliente)}" loading="lazy"></div>` : "";
+  $("#case").classList.toggle("no-media", !c.imagem);
+  $("#case").innerHTML = `${media}
+    <div class="case-body">
+      ${c.cliente ? `<p class="case-client reveal">// ${esc(c.cliente)}</p>` : ""}
+      ${blocks.map(([titulo, texto, extra], i) => `<div class="case-block reveal${extra}" style="--d:${i * 120}"><h3>${titulo}</h3><p>${esc(texto)}</p></div>`).join("")}
+      ${c.link ? `<a class="case-link reveal" href="${esc(c.link)}" target="_blank" rel="noopener">ver o site</a>` : ""}
+    </div>`;
 }
 
 function splitText(root) {
@@ -103,7 +154,7 @@ function setupReveal() {
       io.unobserve(e.target);
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -6% 0px" });
-  $$(".reveal, [data-split], .flow, .dots, .strike").forEach(el => io.observe(el));
+  $$(".reveal, [data-split], .flow, .dots, .strike, .steps").forEach(el => io.observe(el));
 }
 
 function setupCounters() {
@@ -124,6 +175,31 @@ function setupCounters() {
     });
   }, { threshold: 0.6 });
   $$("[data-count]").forEach(el => io.observe(el));
+}
+
+function setupFaq() {
+  const items = $$(".faq-item");
+  const set = (item, open) => {
+    item.classList.toggle("open", open);
+    $(".faq-q", item).setAttribute("aria-expanded", String(open));
+  };
+  items.forEach(item => {
+    $(".faq-q", item).addEventListener("click", () => {
+      const open = !item.classList.contains("open");
+      items.forEach(i => set(i, false));
+      set(item, open);
+    });
+  });
+  if (items[0]) set(items[0], true);
+}
+
+function setupPromo() {
+  const el = $("#promo-until");
+  if (!el || !PROMO_ATE) return;
+  const end = new Date(`${PROMO_ATE}T23:59:59`);
+  if (isNaN(end) || end < new Date()) return;
+  el.textContent = `Promoção válida até ${end.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })}`;
+  el.hidden = false;
 }
 
 function setupMarquee() {
@@ -237,7 +313,7 @@ function setupCursor() {
   }, { passive: true });
 
   document.addEventListener("pointerover", e => {
-    ring.classList.toggle("hot", !!e.target.closest("a, button, input, textarea, .card, .stack li"));
+    ring.classList.toggle("hot", !!e.target.closest("a, button, input, textarea, .card, .stack li, .faq-q, .pack"));
   });
   document.addEventListener("pointerleave", () => document.documentElement.classList.remove("has-cursor"));
   document.addEventListener("pointerenter", () => { if (active) document.documentElement.classList.add("has-cursor"); });
@@ -356,6 +432,8 @@ function runIntro(onReveal) {
 function init() {
   $("#year").textContent = new Date().getFullYear();
   renderProjects();
+  renderTestimonials();
+  renderCase();
   prepare();
   const marquee = setupMarquee();
   setupDots();
@@ -365,6 +443,8 @@ function init() {
   setupTilt();
   setupSpotlight();
   setupForm();
+  setupFaq();
+  setupPromo();
   runIntro(() => { setupReveal(); setupCounters(); });
 }
 
