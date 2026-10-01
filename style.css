@@ -148,8 +148,8 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .flow-frag.in .node { animation: drift 3.4s ease-in-out infinite alternate; animation-delay: calc(var(--n) * -.9s); }
 @keyframes drift { from { transform: translateY(-7px) rotate(-1deg); } to { transform: translateY(7px) rotate(1deg); } }
 
-.flow-org .flow-org .line { flex: 0 0 56px; height: 1px; background: rgba(200, 255, 61, .25); position: relative; overflow: hidden; }
-.flow-org .flow-org .line::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 30%; background: var(--lime); transform: translateX(-100%); }
+.flow-org .line { flex: 0 0 56px; height: 1px; background: rgba(200, 255, 61, .25); position: relative; overflow: hidden; }
+.flow-org .line::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 30%; background: var(--lime); transform: translateX(-100%); }
 .flow-org.in .line::after { animation: run 1.8s linear infinite; animation-delay: calc(var(--n) * .3s); }
 .flow-org.in .node.solid { animation: glow 2.4s ease-in-out infinite; animation-delay: calc(var(--n) * .45s); }
 @keyframes run { to { transform: translateX(340%); } }
@@ -247,6 +247,21 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .btn-line { border: 2px solid var(--black); background: transparent; color: var(--black); padding: 13px 26px; }
 .btn-line:hover { background: var(--black); color: var(--lime); }
 .pack .btn { display: block; text-align: center; }
+
+.pack .ask [data-count] { font-variant-numeric: tabular-nums; }
+.pack .per { margin-top: 4px; }
+.monthly { margin-top: 10px; font-family: var(--mono); font-size: 14px; color: var(--cream); }
+.offer-list .plus { font-family: var(--mono); font-size: 13px; color: var(--lime); padding-left: 0; }
+.offer-list .plus::before { display: none; }
+.offer-list .group { margin-top: 6px; padding-left: 0; font-family: var(--mono); font-size: 13px; color: var(--lime); }
+.offer-list .group::before { display: none; }
+.offer-list .off { color: rgba(10, 10, 10, .65); }
+.pack:not(.featured) .offer-list .off::before { background: transparent; border: 1.5px solid var(--black); }
+.pack.featured .pack-note { color: #b9b3a8; }
+.pack:not(.featured) .pay { color: rgba(10, 10, 10, .65); }
+.maint { margin-top: 20px; }
+.maint-link { font-family: var(--mono); font-size: 15px; border-bottom: 2px solid var(--black); white-space: nowrap; }
+.maint-link:hover { background: var(--black); color: var(--lime); }
 
 .guarantee { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 20px; padding: 20px 24px; border: 1.5px dashed var(--black); border-radius: 6px; }
 .g-tag { font-family: var(--mono); font-size: 13px; background: var(--black); color: var(--lime); padding: 4px 10px; }

@@ -27,7 +27,7 @@ const testimonials = [
   {
     texto: "O site eliminou as dúvidas repetitivas no atendimento e fez os clientes comprarem combos completos direto pelo WhatsApp. O fluxo de vendas nunca foi tão ágil.",
     nome: "Marcos Vinicius",
-    negocio: "MV LEDs — Iluminação Automotiva" 
+    negocio: "MV LEDs — Iluminação Automotiva"
   },
   {
     texto: "O site ficou moderno, intuitivo e muito rápido. Nossos clientes elogiam a facilidade para agendar horários e conhecer o espaço. Recomendo de olhos fechados!",
