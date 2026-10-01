@@ -25,22 +25,22 @@ const PROMO_ATE = "";
 
 const testimonials = [
   {
-    texto: "Escreva aqui o depoimento do cliente, com as palavras dele.",
-    nome: "Nome do cliente",
-    negocio: "Nome do negócio"
+    texto: "O site eliminou as dúvidas repetitivas no atendimento e fez os clientes comprarem combos completos direto pelo WhatsApp. O fluxo de vendas nunca foi tão ágil.",
+    nome: "Marcos Vinicius",
+    negocio: "MV LEDs — Iluminação Automotiva" 
   },
   {
-    texto: "Escreva aqui o segundo depoimento. Apague este bloco se tiver só um.",
-    nome: "Nome do cliente",
-    negocio: "Nome do negócio"
+    texto: "O site ficou moderno, intuitivo e muito rápido. Nossos clientes elogiam a facilidade para agendar horários e conhecer o espaço. Recomendo de olhos fechados!",
+    nome: "Fillipe Bezerra",
+    negocio: "Marrada Sport Club"
   }
 ];
 
 const caseStudy = {
-  cliente: "Nome do cliente",
-  problema: "Descreva aqui qual era o problema do cliente antes do site.",
-  solucao: "Descreva aqui o que você fez.",
-  resultado: "Descreva aqui o que mudou depois, só com dados reais.",
+  cliente: "Marcos Vinicius",
+  problema: "Atendimento sobrecarregado no WhatsApp com dúvidas repetitivas sobre encaixes, preços e temperatura de cor, gerando atrito e vendas limitadas a um único produto.",
+  solucao: "Desenvolvi uma aplicação web de alta conversão com catálogo dinâmico, simulador Kelvin e carrinho com upsell integrado ao WhatsApp.",
+  resultado: "Redução drástica no tempo de atendimento e aumento imediato do valor médio por pedido, com clientes a chegar ao WhatsApp já decididos e com itens complementares no carrinho.",
   imagem: "",
   link: ""
 };
