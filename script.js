@@ -138,12 +138,6 @@ function splitText(root) {
 function prepare() {
   $$("[data-split]").forEach(splitText);
   $$(".flow").forEach(f => [...f.children].forEach((c, n) => c.style.setProperty("--n", n)));
-  const box = $("[data-dots]");
-  for (let k = 0; k < 50; k++) {
-    const d = document.createElement("i");
-    d.style.setProperty("--k", (k % 10) + Math.floor(k / 10));
-    box.append(d);
-  }
 }
 
 function setupReveal() {
@@ -154,7 +148,7 @@ function setupReveal() {
       io.unobserve(e.target);
     });
   }, { threshold: 0.2, rootMargin: "0px 0px -6% 0px" });
-  $$(".reveal, [data-split], .flow, .dots, .strike, .steps").forEach(el => io.observe(el));
+  $$(".reveal, [data-split], .flow, .strike, .steps").forEach(el => io.observe(el));
 }
 
 function setupCounters() {
@@ -219,45 +213,6 @@ function setupMarquee() {
   const first = group();
   track.append(first, group());
   return { track, first };
-}
-
-function setupDots() {
-  const box = $("[data-dots]");
-  const dots = [...box.children];
-  let centers = [];
-  let px = -9999, py = -9999, visible = false;
-
-  const measure = () => {
-    centers = dots.map((d, n) => {
-      const r = d.getBoundingClientRect();
-      return { x: r.left + r.width / 2 + scrollX, y: r.top + r.height / 2 + scrollY, col: n % 10, row: Math.floor(n / 10) };
-    });
-  };
-
-  addEventListener("pointermove", e => { px = e.clientX; py = e.clientY; }, { passive: true });
-  addEventListener("resize", measure);
-  document.fonts && document.fonts.ready.then(measure);
-  new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible) measure(); }).observe(box);
-  measure();
-
-  const tick = t => {
-    if (visible) {
-      const gx = px + scrollX, gy = py + scrollY;
-      centers.forEach((c, n) => {
-        const dx = c.x - gx, dy = c.y - gy;
-        const dist = Math.hypot(dx, dy) || 1;
-        const m = Math.max(0, 1 - dist / 170);
-        const wave = reduce ? 0 : (Math.sin(t / 900 + c.col * .55 + c.row * .8) + 1) / 2 * .2;
-        const v = Math.min(1, m + wave * (1 - m));
-        const push = m * m * 16;
-        const el = dots[n].style;
-        el.transform = `translate(${(dx / dist) * push}px, ${(dy / dist) * push}px) scale(${1 + m * .6})`;
-        el.background = `rgb(${58 + 142 * v | 0}, ${58 + 197 * v | 0}, ${58 + 3 * v | 0})`;
-      });
-    }
-    requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
 }
 
 function setupScroll(marquee) {
@@ -436,7 +391,6 @@ function init() {
   renderCase();
   prepare();
   const marquee = setupMarquee();
-  setupDots();
   setupScroll(marquee);
   setupCursor();
   setupMagnetic();

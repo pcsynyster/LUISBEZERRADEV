@@ -93,13 +93,8 @@ ul, ol { list-style: none; }
 .wi { display: inline-block; transform: translateY(115%); transition: transform 1s var(--ease) calc(var(--i, 0) * 55ms); }
 .in .wi { transform: none; }
 
-.dots { display: grid; grid-template-columns: repeat(10, 1fr); gap: 14px; width: min(430px, 100%); margin: 56px auto 48px; }
-.dots i { display: block; aspect-ratio: 1; border-radius: 50%; background: #3a3a3a; will-change: transform; }
-.js .dots i { opacity: 0; }
-.dots.in i { opacity: 1; animation: dot-in .7s var(--ease) backwards; animation-delay: calc(var(--k) * 45ms); }
-@keyframes dot-in { from { opacity: 0; transform: scale(0); } }
 
-.mono-list { font-family: var(--mono); font-size: clamp(15px, 1.7vw, 19px); display: grid; gap: 6px; }
+.mono-list { margin-top: 48px; font-family: var(--mono); font-size: clamp(15px, 1.7vw, 19px); display: grid; gap: 6px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: center; margin-top: 44px; }
 .mail-link { display: inline-block; font-family: var(--mono); font-size: clamp(15px, 1.7vw, 19px); border-left: 3px solid var(--lime); padding-left: 14px; }
 .mail-link:hover { color: var(--lime); }
@@ -322,7 +317,6 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 @media (max-width: 800px) {
   .about, .contact-grid, .faq-wrap, .case { grid-template-columns: 1fr; }
   .nav a:not(.nav-cta) { display: none; }
-  .dots { gap: 9px; }
   .hero { min-height: 0; }
   .flow-org .line { flex-basis: 28px; }
   .portrait { max-width: 300px; margin-right: 14px; }
@@ -344,7 +338,6 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
   .intro { display: none; }
   .wi { transform: none; transition: none; }
   .js .reveal, .js .flow > * { opacity: 1; translate: none; transition: none; }
-  .js .dots i { opacity: 1; }
   .dot, .flow-frag .node, .flow-org .node, .flow-org .line::after, .card-media::after { animation: none !important; }
   .strike::after { transform: rotate(-2deg) scaleX(1); transition: none; }
   .steps::after { transform: scaleX(1); transition: none; }
