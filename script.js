@@ -45,13 +45,6 @@ const caseStudy = {
   link: ""
 };
 
-const MARQUEE_PHRASES = [
-  "Sites modernos e responsivos",
-  "Foco no seu negócio",
-  "Simples, rápido e eficiente",
-  "do Instagram ao WhatsApp"
-];
-
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
 const $ = (s, r = document) => r.querySelector(s);
@@ -196,55 +189,20 @@ function setupPromo() {
   el.hidden = false;
 }
 
-function setupMarquee() {
-  const track = $("#marquee-track");
-  const group = () => {
-    const g = document.createElement("div");
-    g.className = "marquee-group";
-    for (let r = 0; r < 2; r++) {
-      MARQUEE_PHRASES.forEach(text => {
-        const s = document.createElement("span");
-        s.textContent = text;
-        g.append(s, document.createElement("i"));
-      });
-    }
-    return g;
-  };
-  const first = group();
-  track.append(first, group());
-  return { track, first };
-}
-
-function setupScroll(marquee) {
+function setupScroll() {
   const bar = $("#progress");
   const nav = $("#topbar");
-  const parallax = $$("[data-speed]");
-  let lastY = scrollY, vel = 0, dir = 1, offset = 0, groupWidth = marquee.first.offsetWidth;
-
-  addEventListener("resize", () => { groupWidth = marquee.first.offsetWidth; });
+  let lastY = scrollY;
 
   const frame = () => {
     const y = scrollY;
     const dy = y - lastY;
     const max = document.documentElement.scrollHeight - innerHeight;
-    vel += (dy - vel) * .12;
-    if (Math.abs(dy) > .5) dir = dy > 0 ? 1 : -1;
 
     bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
 
     if (y > 200 && dy > 2) nav.classList.add("hide");
     else if (dy < -2 || y < 200) nav.classList.remove("hide");
-
-    if (!reduce) {
-      offset -= dir * (.9 + Math.abs(vel) * .4);
-      if (offset <= -groupWidth) offset += groupWidth;
-      if (offset > 0) offset -= groupWidth;
-      marquee.track.style.transform = `translate3d(${offset}px, 0, 0)`;
-
-      if (y < innerHeight * 1.5) {
-        parallax.forEach(el => { el.style.translate = `0 ${y * parseFloat(el.dataset.speed)}px`; });
-      }
-    }
 
     lastY = y;
     requestAnimationFrame(frame);
@@ -390,8 +348,7 @@ function init() {
   renderTestimonials();
   renderCase();
   prepare();
-  const marquee = setupMarquee();
-  setupScroll(marquee);
+  setupScroll();
   setupCursor();
   setupMagnetic();
   setupTilt();
