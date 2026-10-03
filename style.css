@@ -158,10 +158,11 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 .card:hover::after { opacity: 1; }
 .card-media { position: relative; aspect-ratio: 16 / 9; background: #0f0f0f; border-bottom: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
 .card-media::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, #262626 0 2px, transparent 3px); background-size: 22px 22px; }
-.card-media::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--lime); opacity: 0; }
+.card-media::after { content: ""; z-index: 2; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--lime); opacity: 0; }
 .card:hover .card-media::after { opacity: .8; animation: scan 1.6s linear infinite; }
 @keyframes scan { from { transform: translateY(0); } to { transform: translateY(320px); } }
-.card-media img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+.card-media img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .6s var(--ease); }
+.card:hover .card-media img { transform: scale(1.04); }
 .card-media span { position: relative; font-weight: 900; font-size: 22px; letter-spacing: -.02em; color: #3d3d3d; transition: color .3s, transform .5s var(--ease); }
 .card:hover .card-media span { color: var(--lime); transform: scale(1.08); }
 .card-body { padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
@@ -343,6 +344,7 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
   .card:hover::after { opacity: 0; }
   .card:hover .card-media::after { opacity: 0; animation: none; }
   .card:hover .card-media span { color: #3d3d3d; transform: none; }
+  .card:hover .card-media img { transform: none; }
   .portrait:hover img { box-shadow: 12px 12px 0 var(--lime); transform: none; }
   .stack li:hover { background: transparent; color: inherit; }
   .direct a:hover { padding-left: 14px; }

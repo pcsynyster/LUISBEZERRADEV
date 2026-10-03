@@ -57,7 +57,7 @@ const esc = s => String(s).replace(/[&<>"']/g, ch => ({ "&": "&amp;", "<": "&lt;
 function renderProjects() {
   $("#projects").innerHTML = projects.map((p, i) => {
     const media = p.imagem
-      ? `<img src="${p.imagem}" alt="Captura de tela do projeto ${p.nome}" loading="lazy">`
+      ? `<img src="${p.imagem}" alt="Captura de tela do projeto ${p.nome}" loading="lazy" style="object-position:${p.posicao || "center top"}">`
       : `<span>${p.nome.toLowerCase()}</span>`;
     const links = [
       p.site ? `<a href="${p.site}" target="_blank" rel="noopener">ver site</a>` : "",
