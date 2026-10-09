@@ -23,6 +23,13 @@ const projects = [
 
 const PROMO_ATE = "";
 
+const PRECOS = {
+  basico: { de: 900, por: 700 },
+  completo: { de: 1400, por: 1000 },
+  avancado: { de: 2200, por: 1500 },
+  manutencao: 100
+};
+
 const testimonials = [
   {
     texto: "O site eliminou as dúvidas repetitivas no atendimento e fez os clientes comprarem combos completos direto pelo WhatsApp. O fluxo de vendas nunca foi tão ágil.",
@@ -178,6 +185,29 @@ function setupFaq() {
     });
   });
   if (items[0]) set(items[0], true);
+}
+
+const brl = n => n.toLocaleString("pt-BR");
+
+function setupPrices() {
+  let maior = 0;
+  $$("[data-plan]").forEach(card => {
+    const p = PRECOS[card.dataset.plan];
+    if (!p) return;
+    const pct = Math.round((1 - p.por / p.de) * 100);
+    maior = Math.max(maior, pct);
+    $(".strike", card).textContent = `R$ ${brl(p.de)}`;
+    const num = $(".num", card);
+    num.dataset.count = p.por;
+    num.textContent = brl(p.por);
+    $(".pct", card).textContent = `-${pct}%`;
+    $(".save", card).textContent = `economize R$ ${brl(p.de - p.por)}`;
+    const link = $(".btn", card);
+    link.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(link.dataset.msg.replace("{preco}", brl(p.por)))}`;
+  });
+  $$("[data-maint]").forEach(el => { el.textContent = `R$ ${brl(PRECOS.manutencao)}`; });
+  const max = $("#max-pct");
+  if (max) max.textContent = `${maior}%`;
 }
 
 function setupPromo() {
@@ -355,6 +385,7 @@ function init() {
   setupSpotlight();
   setupForm();
   setupFaq();
+  setupPrices();
   setupPromo();
   runIntro(() => { setupReveal(); setupCounters(); });
 }

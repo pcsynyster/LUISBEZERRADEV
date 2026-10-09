@@ -242,12 +242,17 @@ mark { background: var(--lime); color: var(--black); padding: 0 .18em; }
 
 .pack .ask [data-count] { font-variant-numeric: tabular-nums; }
 .pack .per { margin-top: 4px; }
-.monthly { margin-top: 10px; font-family: var(--mono); font-size: 14px; color: var(--cream); }
+.monthly { margin-top: 10px; font-family: var(--mono); font-size: 13px; line-height: 1.5; color: #b9b3a8; }
+.monthly strong { color: var(--lime); font-weight: 500; }
 .offer-list .plus { font-family: var(--mono); font-size: 13px; color: var(--lime); padding-left: 0; }
 .offer-list .plus::before { display: none; }
 .offer-list .group { margin-top: 6px; padding-left: 0; font-family: var(--mono); font-size: 13px; color: var(--lime); }
 .offer-list .group::before { display: none; }
 .offer-list .off { color: rgba(10, 10, 10, .65); }
+.nb { white-space: nowrap; }
+.pack:not(.featured) .offer-list .plus, .pack:not(.featured) .offer-list .group { color: rgba(10, 10, 10, .7); }
+.offer-list .bonus { color: var(--cream); }
+.offer-list .bonus strong { color: var(--lime); font-weight: 800; }
 .pack:not(.featured) .offer-list .off::before { background: transparent; border: 1.5px solid var(--black); }
 .pack.featured .pack-note { color: #b9b3a8; }
 .pack:not(.featured) .pay { color: rgba(10, 10, 10, .65); }
