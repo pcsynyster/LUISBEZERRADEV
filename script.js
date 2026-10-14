@@ -1,3 +1,7 @@
+import { inject } from '@vercel/analytics';
+
+inject();
+
 const WHATSAPP = "5584991421656";
 
 const projects = [
